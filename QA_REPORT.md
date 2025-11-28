@@ -1,7 +1,7 @@
 # Shabah QA Snapshot
 
 ## Current install/test status
-- `npm install` fails in this environment with `403 Forbidden` when fetching `@expo/vector-icons`, so no packages or tests were executed.
+- `npm install` currently fails in this environment with `403 Forbidden` when fetching scoped packages such as `@react-navigation/bottom-tabs`, so no packages or tests were executed.
 
 ## Key findings
 1. **Auth is fully local and bypasses verification**

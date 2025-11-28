@@ -59,7 +59,7 @@ A React Native + Firebase chat application tailored for university students. It 
 
 ## Testing & QA
 - **Automated checks:** Run `npm run lint` after installing dependencies.
-- **Current status:** Dependency installation is blocked in this environment by a `403 Forbidden` error when fetching `@expo/vector-icons`. Re-run `npm install` in a network-allowed environment before linting or building.
+- **Current status:** Dependency installation is blocked in this environment by `403 Forbidden` errors when fetching scoped packages such as `@react-navigation/bottom-tabs`. Re-run `npm install` in a network-allowed environment before linting or building.
 
 ## Demo scaffold
 - This repository now includes an Expo + TypeScript starter (`App.tsx` and `src/`) with:
