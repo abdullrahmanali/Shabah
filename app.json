@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Shabah",
+    "slug": "shabah",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./embed.jpg",
+    "splash": {
+      "image": "./embed.jpg",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./embed.jpg",
+        "backgroundColor": "#ffffff"
+      }
+    }
+  }
+}
