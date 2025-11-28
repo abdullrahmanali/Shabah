@@ -1,12 +1,8 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { AuthStackParamList } from '../navigation/AuthStack';
 import { useAuthState } from '../state/useAuthState';
 
-type Props = NativeStackScreenProps<AuthStackParamList, 'Onboarding'>;
-
-export default function OnboardingScreen({ navigation }: Props) {
+export default function OnboardingScreen() {
   const { completeOnboarding } = useAuthState();
   const [name, setName] = useState('');
 

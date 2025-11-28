@@ -19,7 +19,7 @@ A React Native + Firebase chat application tailored for university students. It 
 - **Client:** React Native (Expo recommended) with TypeScript.
 - **Backend:** Firebase Authentication (email + action code), Firestore (chat data), Cloud Storage (media), Cloud Functions (moderation, fan-out, notifications), and Firebase Cloud Messaging.
 - **State & Data:** React Query (server state) + Zustand/Redux Toolkit (UI state). Streaming with Firestore listeners.
-- **Navigation:** React Navigation (stack + tabs), guarded routes after auth.
+- **Navigation:** Simple in-app routing (no React Navigation dependency) with a custom tab bar shell.
 
 ## Data model (Firestore)
 - `users/{uid}`: profile, email domain, display name, verified flag, photo URL, createdAt.
@@ -52,24 +52,24 @@ A React Native + Firebase chat application tailored for university students. It 
 - Rate limit message posting and poll creation.
 
 ## Local development
-1. Install dependencies: `npm install -g expo-cli` then `npm install` inside the project once initialized.
+1. Install dependencies: `npm install -g expo-cli` then `npm install` inside the project once initialized. (In this container, public registry access is blocked with `403 Forbidden`; run these commands on a network that can reach npm.)
 2. Create `app.config.js` with Firebase config (or use `.env` + `app.config.js` to read vars).
 3. Start app: `expo start` (or `npm run start`).
 4. Use Firebase Emulator Suite during development for Auth, Firestore, Functions, and Storage.
 
 ## Testing & QA
 - **Automated checks:** Run `npm run lint` after installing dependencies.
-- **Current status:** Dependency installation is blocked in this environment by `403 Forbidden` errors when fetching scoped packages such as `@react-navigation/bottom-tabs`. Re-run `npm install` in a network-allowed environment before linting or building.
+- **Current status:** Dependency installation is currently blocked in this environment by `403 Forbidden` errors from the npm registry (e.g., when fetching `expo`). Run `npm install` on an unrestricted network before linting or building.
 
 ## Demo scaffold
 - This repository now includes an Expo + TypeScript starter (`App.tsx` and `src/`) with:
-  - Auth stack: email entry, code verification, and onboarding screens in Arabic.
-  - Main tabs: Chats (course/section join flow + mock chat), News (static updates), and Profile (name update + sign out).
+  - Auth flow: email entry, code verification, and onboarding screens in Arabic, wired with local state.
+  - Custom tab shell: Chats (course/section join flow + mock chat), News (static updates), and Profile (name update + sign out).
 - State is local-only (mocked auth/chat stores); replace with Firebase integrations following the architecture notes.
 
 ## Initial screen map
-- **Auth stack:** Email entry → Code verification → Onboarding (name/avatar).
-- **Main tabs:** Chats, News/Announcements, Profile.
+- **Auth flow:** Email entry → Code verification → Onboarding (name/avatar).
+- **Main tabs:** Chats, News/Announcements, Profile (rendered via custom tab bar).
 - **Chats:** list of joined groups; new group join via code/section modal.
 - **Chat room:** messages, attachments, polls, reactions, notify-all toggle for admins, pinned news bar.
 - **Profile:** edit name/photo, notification preferences, logout.

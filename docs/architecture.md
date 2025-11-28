@@ -4,7 +4,7 @@
 A WhatsApp-inspired chat app for university students built with React Native (Expo) and Firebase. Focus areas: verified university email login, course/section-based group discovery, and rich chat features (media, polls, notify-all, news).
 
 ## Tech stack
-- **Client:** React Native (TypeScript, Expo), React Navigation, React Query, Zustand/Redux Toolkit, Firebase JS SDK, UI kit (e.g., Tamagui/Native Base) with light theme.
+- **Client:** React Native (TypeScript, Expo), lightweight in-app routing (custom tab shell), React Query, Zustand/Redux Toolkit, Firebase JS SDK, UI kit (e.g., Tamagui/Native Base) with light theme.
 - **Backend (Firebase):**
   - Authentication (email link/OTP via Firebase Auth + Action Codes)
   - Firestore (groups, members, messages, polls, news)
@@ -53,8 +53,8 @@ A WhatsApp-inspired chat app for university students built with React Native (Ex
 - Audit logs for admin actions (pinning, removing members).
 
 ## UI layout (high-level)
-- **Auth stack:** Email entry → Code verification → Onboarding.
-- **Main:** Tabs (Chats, News, Profile). Chats screen lists joined groups; quick actions to join via code/section.
+- **Auth flow:** Email entry → Code verification → Onboarding.
+- **Main:** Custom tab bar (Chats, News, Profile). Chats screen lists joined groups; quick actions to join via code/section.
 - **Chat room:** header with group info, body with message list, composer with attachments, poll creation sheet, notify-all toggle for admins, pinned news bar, and media preview modal.
 - **News screen:** ordered by `createdAt`, supports pinning and media.
 - **Profile:** edit name/photo, manage notifications, sign out.

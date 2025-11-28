@@ -1,12 +1,13 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { AuthStackParamList } from '../navigation/AuthStack';
 import { useAuthState } from '../state/useAuthState';
 
-type Props = NativeStackScreenProps<AuthStackParamList, 'CodeVerification'>;
+type Props = {
+  email: string;
+  onSuccess: () => void;
+};
 
-export default function CodeVerificationScreen({ route, navigation }: Props) {
+export default function CodeVerificationScreen({ email, onSuccess }: Props) {
   const { verifyCode } = useAuthState();
   const [code, setCode] = useState('');
 
@@ -16,12 +17,12 @@ export default function CodeVerificationScreen({ route, navigation }: Props) {
       Alert.alert('رمز غير صحيح', 'أدخل رمزًا مكونًا من 6 أرقام.');
       return;
     }
-    navigation.navigate('Onboarding', { email: route.params.email });
+    onSuccess();
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>أدخل الرمز المرسل إلى {route.params.email}</Text>
+      <Text style={styles.title}>أدخل الرمز المرسل إلى {email}</Text>
       <TextInput
         placeholder="123456"
         style={styles.input}

@@ -1,24 +1,18 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
-import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { AuthStackParamList } from '../navigation/AuthStack';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useAuthState } from '../state/useAuthState';
 
-const UNIVERSITY_DOMAIN = 'edu';
+type Props = {
+  onContinue: (email: string) => void;
+};
 
-type Props = NativeStackScreenProps<AuthStackParamList, 'EmailEntry'>;
-
-export default function EmailEntryScreen({ navigation }: Props) {
+export default function EmailEntryScreen({ onContinue }: Props) {
   const { signInWithEmail } = useAuthState();
   const [email, setEmail] = useState('');
 
   const handleContinue = () => {
-    if (!email.includes('@') || !email.endsWith(`.${UNIVERSITY_DOMAIN}`)) {
-      Alert.alert('بريد غير صالح', 'استخدم بريد الجامعة المنتهي بـ edu.');
-      return;
-    }
     signInWithEmail(email.trim());
-    navigation.navigate('CodeVerification', { email });
+    onContinue(email);
   };
 
   return (
